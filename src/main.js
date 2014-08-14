@@ -1,0 +1,1 @@
+var gaim = require('./lib/gaim.js');

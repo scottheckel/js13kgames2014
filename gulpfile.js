@@ -11,7 +11,7 @@ var concat = require('gulp-concat');
 var cssmin = require('gulp-cssmin');
 var eslint = require('gulp-eslint');
 var htmlmin = require('gulp-htmlmin');
-var less = require('gulp-less');
+var sass = require('gulp-sass');
 var micro = require('gulp-micro');
 var size = require('gulp-size');
 var uglify = require('gulp-uglify');
@@ -63,8 +63,8 @@ gulp.task('build_index', function() {
 });
 
 gulp.task('build_styles', function() {
-  return gulp.src('src/styles.less')
-    .pipe(less())
+  return gulp.src('src/styles.sass')
+    .pipe(sass({sourceComments: 'normal'}))
     .pipe(concat('build.css'))
     .pipe(gulpif(prod, cssmin()))
     .pipe(gulp.dest('build'));
@@ -96,7 +96,7 @@ gulp.task('dist', ['build'], function() {
 
 gulp.task('watch', function() {
   gulp.watch('src/**/*.js', ['lint', 'build_source']);
-  gulp.watch('src/styles.less', ['build_styles']);
+  gulp.watch('src/styles.sass', ['build_styles']);
   gulp.watch('src/index.html', ['build_index']);
 });
 

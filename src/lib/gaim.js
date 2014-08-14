@@ -1,4 +1,4 @@
-window.gaim = function(gameWrapper) {
+module.exports = function(gameWrapper) {
 	var entityStore = [],
 		componentSetup = {},
 		currentId = 1,
